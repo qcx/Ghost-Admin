@@ -1,0 +1,20 @@
+{{#gh-token-input/select
+  renderInPlace=true
+  selected=selectedModule
+  options=modules
+  onchange=(action "setModule")
+  searchField="name"
+  as |module| }}
+  {{module.name}}
+{{/gh-token-input/select}}
+<br>
+{{#gh-token-input/select
+  disabled=(action "isModulePresent")
+  onchange=(action "setModule")
+  options=moduleOptions
+  renderInPlace=true
+  searchField="name"
+  selected=selectedRecord
+  as |record| }}
+  {{record}}
+{{/gh-token-input/select}}

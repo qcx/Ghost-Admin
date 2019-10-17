@@ -97,6 +97,15 @@
                     {{/gh-form-group}}
                 {{/unless}}
 
+                {{!-- New Odin Associations --}}
+                {{#unless session.user.isAuthorOrContributor}}
+                    {{#gh-form-group class="for-select" errors=post.errors hasValidated=post.hasValidated property="associations" data-test-input="associations"}}
+                        <label for="author-list">Associations</label>
+                        {{gh-psm-associations-input selectedAuthors=post.authors updateAuthors=(action "changeAuthors") triggerId="author-list"}}
+                        {{gh-error-message errors=post.errors property="authors" data-test-error="authors"}}
+                    {{/gh-form-group}}
+                {{/unless}}
+
                 <ul class="nav-list nav-list-block">
                     <li class="nav-list-item" {{action "showSubview" "meta-data"}} data-test-button="meta-data">
                         <button type="button">
