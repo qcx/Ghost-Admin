@@ -9,12 +9,12 @@ export default Ember.Component.extend({
   institutesIds: [],
   examiningBoard: {
       id: 4,
-      name: 'Examining Board',
+      name: 'Examining Boards',
       getFunction: 'getExaminingBoards'
     },
   institute: {
       id: 11,
-      name: 'Institute',
+      name: 'Institutes',
       getFunction: 'getInstitutes'
     },
   actions: {
@@ -25,9 +25,10 @@ export default Ember.Component.extend({
       this.set('selectedExaminingBoards', selected);
     },
     selectInstitute(selected){
-      selected = [...new Set(selected)];
-      this.set('selectedInstitutes', this.selectedInstitutes.concat(selected));
-      this.set('institutesIds', this.institutesIds.concat([selected[0].id]));
+      selected = selected.reduce((unique, element) => {
+        return unique.map(e => e.id).includes(element.id) ? unique : [...unique, element];
+      }, []);
+      this.set('selectedInstitutes', selected);
     },
     getExaminingBoards() {
       if(!this.examiningBoards){
