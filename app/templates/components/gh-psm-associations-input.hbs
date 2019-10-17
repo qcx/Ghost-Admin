@@ -1,20 +1,25 @@
-{{#gh-token-input/select
-  renderInPlace=true
-  selected=selectedModule
-  options=modules
-  onchange=(action "setModule")
-  searchField="name"
-  as |module| }}
-  {{module.name}}
-{{/gh-token-input/select}}
-<br>
-{{#gh-token-input/select
-  disabled=(action "isModulePresent")
-  onchange=(action "setModule")
-  options=moduleOptions
-  renderInPlace=true
-  searchField="name"
-  selected=selectedRecord
-  as |record| }}
-  {{record}}
-{{/gh-token-input/select}}
+<b>{{examiningBoard.name}}</b>
+{{#gh-token-input/select-multiple
+class=(concat "gh-token-input " class)
+onchange=(action 'selectExaminingBoard')
+onopen=(action 'getExaminingBoards')
+options=examiningBoards
+renderInPlace=true
+searchField="sigla"
+selected=selectedExaminingBoards
+as |record| }}
+{{record.sigla}}
+{{/gh-token-input/select-multiple}}
+
+<b>{{institute.name}}</b>
+{{#gh-token-input/select-multiple
+class=(concat "gh-token-input " class)
+onchange=(action 'selectInstitute')
+onopen=(action 'getInstitutes')
+options=institutes
+renderInPlace=true
+searchField="sigla"
+selected=selectedInstitutes
+as |record| }}
+{{record.sigla}}
+{{/gh-token-input/select-multiple}}

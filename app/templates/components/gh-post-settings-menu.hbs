@@ -100,9 +100,9 @@
                 {{!-- New Odin Associations --}}
                 {{#unless session.user.isAuthorOrContributor}}
                     {{#gh-form-group class="for-select" errors=post.errors hasValidated=post.hasValidated property="associations" data-test-input="associations"}}
-                        <label for="author-list">Associations</label>
-                        {{gh-psm-associations-input selectedAuthors=post.authors updateAuthors=(action "changeAuthors") triggerId="author-list"}}
-                        {{gh-error-message errors=post.errors property="authors" data-test-error="authors"}}
+                        <label for="associations-list">Associations</label>
+                        {{gh-psm-associations-input selectedAuthors=post.authors updateAuthors=(action "changeAuthors") triggerId="associations-list"}}
+                        {{gh-error-message errors=post.errors property="associations" data-test-error="associations"}}
                     {{/gh-form-group}}
                 {{/unless}}
 
