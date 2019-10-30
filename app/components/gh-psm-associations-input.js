@@ -7,6 +7,26 @@ import _ from 'lodash/lodash';
 const brokkUrl = 'https://vqs32o851c.execute-api.us-east-1.amazonaws.com/production/';
 
 export default Component.extend({
+    init(){
+        this._super(...arguments);
+        if(!this.postId){
+            return;
+        }
+        const url = this.url+`?filter=post_id%3A${this.postId}`;
+        this.ajax.request(url).then((response) => {
+            const associations = response.odin_associations.map(el => {
+                return {
+                    sigla: el.label,
+                    id: parseInt(el.resource_id),
+                    module_id: el.module_id,
+                    association_id: el.id
+                }
+            });
+            console.log(associations);
+            this.set('selectedExaminingBoards', associations.filter(a => a.module_id == this.get('examiningBoard').id));
+            this.set('selectedInstitutes', associations.filter(a => a.module_id == this.get('institute').id));
+        });
+    },
     url: `${ghostPaths().apiRoot}/odin_associations`,
     ajax: service(),
     examiningBoards: null,
@@ -96,7 +116,8 @@ export default Component.extend({
             odin_associations: [{
                 post_id: this.postId,
                 module_id: module.id,
-                resource_id: resource.id
+                resource_id: resource.id,
+                label: resource.sigla
             }]
         });
     },
@@ -114,7 +135,7 @@ export default Component.extend({
         });
     },
     deleteAssociation(id) {
-        let url = this.url+`/${id}`;
+        const url = this.url+`/${id}`;
         return this.ajax.del(url);
     }
 });
