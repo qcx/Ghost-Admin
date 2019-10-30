@@ -22,7 +22,6 @@ export default Component.extend({
                     association_id: el.id
                 }
             });
-            console.log(associations);
             this.set('selectedExaminingBoards', associations.filter(a => a.module_id == this.get('examiningBoard').id));
             this.set('selectedInstitutes', associations.filter(a => a.module_id == this.get('institute').id));
         });
