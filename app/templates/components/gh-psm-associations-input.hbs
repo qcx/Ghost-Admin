@@ -8,7 +8,7 @@ renderInPlace=true
 searchField="sigla"
 selected=selectedExaminingBoards
 as |record| }}
-{{record.sigla}}
+  {{if record.label record.label record.sigla}}
 {{/gh-token-input/select-multiple}}
 
 <b>{{institute.name}}</b>
@@ -21,5 +21,5 @@ renderInPlace=true
 searchField="sigla"
 selected=selectedInstitutes
 as |record| }}
-{{record.sigla}}
+  {{if record.label record.label record.sigla}}
 {{/gh-token-input/select-multiple}}

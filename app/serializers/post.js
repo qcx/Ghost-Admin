@@ -8,6 +8,7 @@ export default ApplicationSerializer.extend(EmbeddedRecordsMixin, {
     attrs: {
         authors: {embedded: 'always'},
         tags: {embedded: 'always'},
+        odinResources: {embedded: 'always'},
         publishedAtUTC: {key: 'published_at'},
         createdAtUTC: {key: 'created_at'},
         updatedAtUTC: {key: 'updated_at'}

@@ -116,7 +116,10 @@ export default Model.extend(Comparable, ValidationEngine, {
         embedded: 'always',
         async: false
     }),
-
+    odinResources: hasMany('odin_resource', {
+        embedded: 'always',
+        async: false
+    }),
     primaryAuthor: computed('authors.[]', function () {
         return this.get('authors.firstObject');
     }),
