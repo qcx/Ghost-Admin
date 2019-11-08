@@ -10,23 +10,16 @@ export default Component.extend({
     store: service(),
     init(){
         this._super(...arguments);
-        if(!this.postId){
-            return;
-        }
         this.store.query('odin-resource', {limit: 'all'});
         this.set('availableResources', this.store.peekAll('odin-resource'));
         this.set('selectedExaminingBoards', this.get('selectedAssociations').filter((resource) => resource.moduleId == this.get('examiningBoard').id));
         this.set('selectedInstitutes', this.get('selectedAssociations').filter((resource) => resource.moduleId == this.get('institute').id));
     },
-    url: `${ghostPaths().apiRoot}/odin_associations`,
-    ajax: service(),
     availableResources: null,
     examiningBoards: null,
     selectedExaminingBoards: null,
-    examiningBoardsIds: [],
     institutes: null,
     selectedInstitutes: null,
-    institutesIds: [],
     examiningBoard: {
         id: 4,
         name: 'Examining Boards',
