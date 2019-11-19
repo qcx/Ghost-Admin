@@ -34,7 +34,7 @@ export default Component.extend({
         selectExaminingBoard(selected) {
             let previous = this.get('selectedExaminingBoards');
             let next = selected
-            if(previous.length > next.length){
+            if (previous.length > next.length){
                 this.set('selectedExaminingBoards', selected);
                 this.set('selectedAssociations', selected.concat(this.get('selectedInstitutes')));
             }else{
