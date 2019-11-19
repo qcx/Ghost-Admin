@@ -108,6 +108,15 @@
                     {{/gh-form-group}}
                 {{/unless}}
 
+                {{!-- New Odin Associations --}}
+                {{#unless session.user.isAuthorOrContributor}}
+                    {{#gh-form-group class="for-select" errors=post.errors hasValidated=post.hasValidated property="associations" data-test-input="associations"}}
+                        <label for="associations-list">Associations</label>
+                        {{gh-psm-associations-input selectedAssociations=post.odinResources postId=post.id triggerId="associations-list"}}
+                        {{gh-error-message errors=post.errors property="associations" data-test-error="associations"}}
+                    {{/gh-form-group}}
+                {{/unless}}
+
                 <ul class="nav-list nav-list-block">
                     <li class="nav-list-item" {{action "showSubview" "meta-data"}} data-test-button="meta-data">
                         <button type="button">

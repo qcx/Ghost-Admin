@@ -135,5 +135,8 @@
   },
   "resolutions": {
     "ember-in-viewport": "3.5.8"
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
   }
 }
