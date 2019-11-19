@@ -43,7 +43,8 @@ export default Component.extend({
                 let duplicate = previous.find((resource) => {
                     return resource.resourceId == added.id && resource.moduleId == this.get('examiningBoard').id && resource.productId == 1;
                 });
-                if(duplicate) return;
+                
+                if (duplicate) return;
                 let resourceToAdd = availableResources.filter((resource) => {
                     added.id == resource.resourceId && this.get('examiningBoard').id == resource.moduleId && resource.productId == 1;
                 });
