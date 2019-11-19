@@ -37,7 +37,7 @@ export default Component.extend({
             if (previous.length > next.length){
                 this.set('selectedExaminingBoards', selected);
                 this.set('selectedAssociations', selected.concat(this.get('selectedInstitutes')));
-            }else{
+            } else {
                 let added = selected[selected.length-1];
                 let availableResources = this.get('availableResources');
                 let duplicate = previous.find((resource) => {
