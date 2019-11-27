@@ -113,8 +113,14 @@ export default Model.extend(Comparable, ValidationEngine, {
     createdBy: belongsTo('user', {async: true}),
     email: belongsTo('email', {async: false}),
     publishedBy: belongsTo('user', {async: true}),
-    tags: hasMany('tag', {embedded: 'always', async: false}),
-
+    tags: hasMany('tag', {
+        embedded: 'always',
+        async: false
+    }),
+    odinResources: hasMany('odin_resource', {
+        embedded: 'always',
+        async: false
+    }),
     primaryAuthor: computed('authors.[]', function () {
         return this.get('authors.firstObject');
     }),

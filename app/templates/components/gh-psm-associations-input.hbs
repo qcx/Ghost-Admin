@@ -1,0 +1,25 @@
+<b>{{examiningBoard.name}}</b>
+{{#gh-token-input/select-multiple
+class=(concat "gh-token-input " class)
+onchange=(action 'selectExaminingBoard')
+onopen=(action 'getExaminingBoards')
+options=examiningBoards
+renderInPlace=true
+searchField="sigla"
+selected=selectedExaminingBoards
+as |record| }}
+  {{if record.label record.label record.sigla}}
+{{/gh-token-input/select-multiple}}
+
+<b>{{institute.name}}</b>
+{{#gh-token-input/select-multiple
+class=(concat "gh-token-input " class)
+onchange=(action 'selectInstitute')
+onopen=(action 'getInstitutes')
+options=institutes
+renderInPlace=true
+searchField="sigla"
+selected=selectedInstitutes
+as |record| }}
+  {{if record.label record.label record.sigla}}
+{{/gh-token-input/select-multiple}}
