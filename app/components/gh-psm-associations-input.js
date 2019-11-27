@@ -34,16 +34,17 @@ export default Component.extend({
         selectExaminingBoard(selected) {
             let previous = this.get('selectedExaminingBoards');
             let next = selected
-            if(previous.length > next.length){
+            if (previous.length > next.length){
                 this.set('selectedExaminingBoards', selected);
                 this.set('selectedAssociations', selected.concat(this.get('selectedInstitutes')));
-            }else{
+            } else {
                 let added = selected[selected.length-1];
                 let availableResources = this.get('availableResources');
                 let duplicate = previous.find((resource) => {
                     return resource.resourceId == added.id && resource.moduleId == this.get('examiningBoard').id && resource.productId == 1;
                 });
-                if(duplicate) return;
+                
+                if (duplicate) return;
                 let resourceToAdd = availableResources.filter((resource) => {
                     added.id == resource.resourceId && this.get('examiningBoard').id == resource.moduleId && resource.productId == 1;
                 });
